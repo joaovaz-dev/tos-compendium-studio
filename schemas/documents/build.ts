@@ -1,0 +1,144 @@
+import {defineType, defineField} from 'sanity'
+
+export default defineType({
+  name: 'build',
+  title: 'Build',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {source: 'title', maxLength: 96},
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
+      name: 'rank',
+      title: 'Rank',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'S+', value: 's+'},
+          {title: 'S', value: 's'},
+          {title: 'A', value: 'a'},
+          {title: 'B', value: 'b'},
+          {title: 'C', value: 'c'},
+          {title: 'D', value: 'd'},
+        ],
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
+      name: 'className',
+      title: 'Main Class',
+      type: 'reference',
+      to: [{type: 'class'}],
+      options: {
+        filter: 'type == "base"',
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
+      name: 'mode',
+      title: 'Mode',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'PvE', value: 'pve'},
+          {title: 'PvP', value: 'pvp'},
+        ],
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'portableTextWithColors',
+    }),
+
+    defineField({
+      name: 'mainImage',
+      title: 'Thumbnail Image',
+      type: 'image',
+    }),
+
+    defineField({
+      name: 'introduction',
+      title: 'Introduction',
+      type: 'portableTextWithColors',
+    }),
+
+    defineField({
+      name: 'composition',
+      title: 'Build Composition',
+      type: 'compositionSection',
+    }),
+
+    defineField({
+      name: 'items',
+      title: 'Items',
+      type: 'array',
+      of: [{type: 'item'}],
+    }),
+
+    defineField({
+      name: 'skillsGroup',
+      title: 'Skills',
+      type: 'array',
+      of: [{type: 'skillObject'}],
+    }),
+
+    defineField({
+      name: 'skillsRotation',
+      title: 'Skills Rotation',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Rotation Title',
+              type: 'string',
+            }),
+
+            defineField({
+              name: 'skills',
+              title: 'Skills',
+              type: 'array',
+              of: [{type: 'reference', to: [{type: 'skill'}]}],
+            }),
+            defineField({
+              name: 'description',
+              title: 'Description',
+              type: 'portableTextWithColors',
+            }),
+          ],
+        },
+      ],
+    }),
+
+    defineField({
+      name: 'considerations',
+      title: 'Final Considerations',
+      type: 'portableTextWithColors',
+    }),
+
+    defineField({
+      name: 'youtubeUrl',
+      title: 'YouTube Video',
+      type: 'url',
+    }),
+  ],
+})
