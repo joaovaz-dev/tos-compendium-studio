@@ -9,7 +9,7 @@ export default defineType({
       name: 'classes',
       title: 'Classes',
       type: 'array',
-      of: [{type: 'reference', to: [{type: 'class'}], options: {filter: 'type != "base"'}}],
+      of: [{type: 'reference', to: [{type: 'class'}]}],
       validation: (Rule) => Rule.required().min(1),
     }),
 

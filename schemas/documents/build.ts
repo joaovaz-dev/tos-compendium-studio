@@ -38,13 +38,10 @@ export default defineType({
     }),
 
     defineField({
-      name: 'className',
-      title: 'Main Class',
+      name: 'class',
+      title: 'Class Base',
       type: 'reference',
-      to: [{type: 'class'}],
-      options: {
-        filter: 'type == "base"',
-      },
+      to: [{type: 'classBase'}],
       validation: (Rule) => Rule.required(),
     }),
 

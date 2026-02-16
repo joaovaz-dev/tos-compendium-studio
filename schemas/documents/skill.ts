@@ -34,7 +34,7 @@ export default defineType({
       name: 'class',
       title: 'Class',
       type: 'reference',
-      to: [{type: 'class'}],
+      to: [{type: 'class'}, {type: 'classBase'}],
       validation: (Rule) => Rule.required(),
     }),
 
