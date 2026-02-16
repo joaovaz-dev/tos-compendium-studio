@@ -138,9 +138,22 @@ export default defineType({
     }),
 
     defineField({
-      name: 'youtubeUrl',
-      title: 'YouTube Video',
-      type: 'url',
+      name: 'videoSection',
+      title: 'Video Content',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Section Title',
+          type: 'string',
+        }),
+
+        defineField({
+          name: 'url',
+          title: 'Video URL',
+          type: 'url',
+        }),
+      ],
     }),
   ],
 })
