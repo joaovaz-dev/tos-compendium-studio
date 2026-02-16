@@ -34,6 +34,24 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+
+    defineField({
+      name: 'classesBase',
+      title: 'Classes Base',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'class'}],
+          options: {
+            filter: '_type == "class" && type == $baseType',
+            filterParams: {baseType: 'base'},
+          },
+        },
+      ],
+      hidden: ({parent}: {parent?: {type?: string}}) => parent?.type === 'base',
+    }),
+
     defineField({
       name: 'image',
       title: 'Class Image',

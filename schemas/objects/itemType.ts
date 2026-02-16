@@ -27,4 +27,32 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
   ],
+  preview: {
+    select: {
+      title: 'itemOptions',
+      fallbackTitle: 'item.name',
+      media: 'item.image',
+    },
+    prepare(selection: any) {
+      const {title: blocks, fallbackTitle, media} = selection
+
+      const blocksToText = (blocksArr: any) => {
+        if (!blocksArr) return ''
+        return blocksArr
+          .map((block: any) => {
+            if (!block || !block.children) return ''
+            return block.children.map((child: any) => child.text || '').join('')
+          })
+          .filter(Boolean)
+          .join(' ')
+          .substring(0, 80)
+      }
+
+      const text = blocksToText(blocks)
+      return {
+        title: text || fallbackTitle || 'Item',
+        media,
+      }
+    },
+  },
 })
