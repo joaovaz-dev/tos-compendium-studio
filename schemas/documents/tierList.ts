@@ -44,6 +44,7 @@ export default defineType({
                   to: [{type: 'class'}],
                 },
               ],
+              validation: (Rule) => Rule.required().min(1),
             },
           ],
         },
