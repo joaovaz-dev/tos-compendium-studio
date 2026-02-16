@@ -6,25 +6,25 @@ export default defineType({
   type: 'object',
   fields: [
     defineField({
-      name: 'name',
-      title: 'Item Name',
-      type: 'string',
+      name: 'item',
+      title: 'Item',
+      type: 'reference',
+      to: [{type: 'equipment'}],
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-    }),
+
     defineField({
       name: 'itemOptions',
       title: 'Item Options',
       type: 'portableTextWithColors',
+      validation: (Rule) => Rule.required(),
     }),
+
     defineField({
       name: 'explanation',
       title: 'Explanation',
       type: 'portableTextWithColors',
+      validation: (Rule) => Rule.required(),
     }),
   ],
 })

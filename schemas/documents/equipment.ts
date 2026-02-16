@@ -1,13 +1,13 @@
 import {defineType, defineField} from 'sanity'
 
 export default defineType({
-  name: 'class',
-  title: 'Class',
+  name: 'equipment',
+  title: 'Equipment',
   type: 'document',
   fields: [
     defineField({
       name: 'name',
-      title: 'Class Name',
+      title: 'Equipment Name',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
@@ -21,29 +21,12 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
-      name: 'type',
-      title: 'Class Type',
-      type: 'string',
-      options: {
-        list: [
-          {title: 'Base', value: 'base'},
-          {title: 'Normal', value: 'normal'},
-          {title: 'Premium', value: 'premium'},
-        ],
-      },
-      validation: (Rule) => Rule.required(),
-    }),
+
     defineField({
       name: 'image',
-      title: 'Class Image',
+      title: 'Equipment Image',
       type: 'image',
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'portableTextWithColors',
     }),
   ],
 })

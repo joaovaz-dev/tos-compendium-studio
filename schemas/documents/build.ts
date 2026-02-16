@@ -56,6 +56,7 @@ export default defineType({
         list: [
           {title: 'PvE', value: 'pve'},
           {title: 'PvP', value: 'pvp'},
+          {title: 'Support', value: 'support'},
         ],
       },
       validation: (Rule) => Rule.required(),
@@ -71,6 +72,7 @@ export default defineType({
       name: 'mainImage',
       title: 'Thumbnail Image',
       type: 'image',
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
@@ -81,7 +83,7 @@ export default defineType({
 
     defineField({
       name: 'composition',
-      title: 'Build Composition',
+      title: 'Classes that Compose the Build',
       type: 'compositionSection',
     }),
 
@@ -92,12 +94,12 @@ export default defineType({
       of: [{type: 'item'}],
     }),
 
-    defineField({
-      name: 'skillsGroup',
-      title: 'Skills',
-      type: 'array',
-      of: [{type: 'skillObject'}],
-    }),
+    // defineField({
+    //   name: 'skillsGroup',
+    //   title: 'Skills',
+    //   type: 'array',
+    //   of: [{type: 'skillObject'}],
+    // }),
 
     defineField({
       name: 'skillsRotation',

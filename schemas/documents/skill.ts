@@ -34,6 +34,7 @@ export default defineType({
       name: 'image',
       title: 'Skill Image',
       type: 'image',
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
