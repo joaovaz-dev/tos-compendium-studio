@@ -45,5 +45,16 @@ export default defineType({
       title: 'Description',
       type: 'portableTextWithColors',
     }),
+    defineField({
+      name: 'skills',
+      title: 'Skills',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'skill'}],
+        },
+      ],
+    }),
   ],
 })
