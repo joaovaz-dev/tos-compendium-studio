@@ -56,6 +56,22 @@ export default defineType({
         {
           type: 'reference',
           to: [{type: 'skill'}],
+          options: {
+            filter: ({document}) => {
+              const rawId = document?._id
+
+              if (!rawId) {
+                return {filter: '_id == ""'}
+              }
+
+              const classId = rawId.replace(/^drafts\./, '')
+
+              return {
+                filter: 'class._ref == $classId',
+                params: {classId},
+              }
+            },
+          },
         },
       ],
     }),

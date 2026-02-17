@@ -8,9 +8,15 @@ import skillDocument from './documents/skill'
 import equipment from './documents/equipment'
 import tierList from './documents/tierList'
 import classBase from './documents/classBase'
+import planner from './documents/planner'
+import genericPage from './documents/genericPage'
+import textSection from './objects/textSection'
+import imageSection from './objects/imageSection'
 
 export const schemaTypes = [
+  genericPage,
   build,
+  planner,
   tierList,
   classBase,
   classDocument,
@@ -20,4 +26,6 @@ export const schemaTypes = [
   portableTextWithColors,
   skillDocument,
   equipment,
+  textSection,
+  imageSection,
 ]
