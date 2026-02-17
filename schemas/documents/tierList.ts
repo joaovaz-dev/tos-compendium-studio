@@ -51,4 +51,17 @@ export default defineType({
       ],
     },
   ],
+  preview: {
+    select: {
+      baseClassImage: 'baseClass.image',
+      tierListTitle: 'title',
+    },
+    prepare(selection: any) {
+      const {baseClassImage} = selection
+      return {
+        title: selection.tierListTitle,
+        media: baseClassImage,
+      }
+    },
+  },
 })

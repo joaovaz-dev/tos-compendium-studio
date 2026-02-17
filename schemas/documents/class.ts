@@ -11,6 +11,7 @@ export default defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
+
     defineField({
       name: 'slug',
       title: 'Slug',
@@ -40,11 +41,13 @@ export default defineType({
       type: 'image',
       validation: (Rule) => Rule.required(),
     }),
+
     defineField({
       name: 'description',
       title: 'Description',
       type: 'portableTextWithColors',
     }),
+
     defineField({
       name: 'skills',
       title: 'Skills',
