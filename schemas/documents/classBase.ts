@@ -44,18 +44,21 @@ export default defineType({
           type: 'reference',
           to: [{type: 'skill'}],
           options: {
-            filter: ({document}) => {
-              const rawId = document?._id
+            filter: ({document}: any) => {
+              const id = document?._id?.replace(/^drafts\./, '')
 
-              if (!rawId) {
-                return {filter: '_id == ""'}
+              if (!id) {
+                return {
+                  filter: '_id == null',
+                }
               }
 
-              const classId = rawId.replace(/^drafts\./, '')
-
               return {
-                filter: 'class._ref == $classId',
-                params: {classId},
+                filter: `
+                  class._ref == $id ||
+                  $id in classes[]._ref
+                `,
+                params: {id},
               }
             },
           },
