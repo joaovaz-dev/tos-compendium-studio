@@ -39,6 +39,19 @@ export default defineType({
     }),
 
     defineField({
+      name: 'classes',
+      title: 'Classes',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'class'}, {type: 'classBase'}],
+        },
+      ],
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
       name: 'type',
       title: 'Skill Type',
       type: 'string',
