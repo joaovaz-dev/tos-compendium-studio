@@ -108,15 +108,50 @@ export default defineType({
           fields: [
             defineField({
               name: 'title',
-              title: 'Rotation Title',
+              title: 'Rotation Section Title',
               type: 'string',
             }),
 
             defineField({
-              name: 'skills',
-              title: 'Skills',
+              name: 'lineRotations',
+              title: 'Line Rotations',
               type: 'array',
-              of: [{type: 'reference', to: [{type: 'skill'}]}],
+              of: [
+                {
+                  type: 'object',
+                  fields: [
+                    defineField({
+                      name: 'lineRotationTitle',
+                      title: 'Line Rotation Title',
+                      type: 'string',
+                    }),
+                    defineField({
+                      name: 'skills',
+                      title: 'Skills in this Rotation Line',
+                      type: 'array',
+                      of: [
+                        {
+                          type: 'object',
+                          fields: [
+                            defineField({
+                              name: 'skill',
+                              title: 'Skill',
+                              type: 'reference',
+                              to: [{type: 'skill'}],
+                            }),
+                            defineField({
+                              name: 'quantity',
+                              title: 'Quantity',
+                              type: 'number',
+                              validation: (Rule) => Rule.required().min(1),
+                            }),
+                          ],
+                        },
+                      ],
+                    }),
+                  ],
+                },
+              ],
             }),
             defineField({
               name: 'description',
